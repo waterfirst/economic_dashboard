@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미국-한국 경제 지표 대쉬보드</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e1e4e8;
+            --primary-color: #2196F3;
+            --us-color: #e91e63;
+            --kr-color: #3f51b5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            padding: 10px 0;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: #1a202c;
+        }
+
+        .last-updated {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .col-12 { grid-column: span 12; }
+        .col-6 { grid-column: span 6; }
+        .col-4 { grid-column: span 4; }
+
+        @media (max-width: 900px) {
+            .col-6, .col-4 { grid-column: span 12; }
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 경제 지표 테이블 스타일 */
+        .macro-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .macro-table th, .macro-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .macro-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .flag {
+            display: inline-block;
+            width: 20px;
+            height: 14px;
+            background-size: cover;
+            vertical-align: middle;
+            margin-right: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+        .bg-us { background-color: var(--us-color); }
+        .bg-kr { background-color: var(--kr-color); }
+
+        /* 위젯 가로세로 비율 유지 */
+        .widget-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🇺🇸 🇰🇷 한·미 매크로 경제 지표 대쉬보드</h1>
+        <div class="last-updated">실시간 금융 시장 데이터 연동</div>
+    </header>
+
+    <div class="container">
+        
+        <!-- 주요 거시경제 지표 비교 요약 (2026 상반기 데이터 기준) -->
+        <div class="card col-12">
+            <div class="card-title">💡 핵심 거시경제 지표 비교 요약</div>
+            <table class="macro-table">
+                <thead>
+                    <tr>
+                        <th>경제 지표</th>
+                        <th>🇺🇸 미국 (USA)</th>
+                        <th>🇰🇷 한국 (KOREA)</th>
+                        <th>비교 및 시사점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>기준금리 (Policy Rate)</strong></td>
+                        <td><span class="badge bg-us">4.75% ~ 5.00%</span></td>
+                        <td><span class="badge bg-kr">3.00%</span></td>
+                        <td>한미 금리 역전 현상 지속, 외환 시장 변동성 유의</td>
+                    </tr>
+                    <tr>
+                        <td><strong>물가상승률 (CPI YoY)</strong></td>
+                        <td><span class="text-us">2.4%</span></td>
+                        <td><span class="text-kr">2.1%</span></td>
+                        <td>양국 모두 인플레이션 둔화세 (안정화 단계 진입)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GDP 성장률 (연율)</strong></td>
+                        <td>2.1% (상반기 잠정)</td>
+                        <td>1.8% (상반기 잠정)</td>
+                        <td>미국 소비 지출 견조, 한국 수출 회복세 기반 완만한 성장</td>
+                    </tr>
+                    <tr>
+                        <td><strong>실업률 (Unemployment)</strong></td>
+                        <td>4.1%</td>
+                        <td>2.8%</td>
+                        <td>양국 모두 자연실업률 수준의 안정적 고용 지표 유지</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 원/달러 환율 실시간 차트 위젯 -->
+        <div class="card col-6">
+            <div class="card-title">💵 원/달러 환율 (USD/KRW) 실시간 추이</div>
+            <div class="widget-container">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div id="tradingview_fx" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                    new TradingView.widget({
+                        "autosize": true,
+                        "symbol": "FX_IDC:USDKRW",
+                        "interval": "D",
+                        "timezone": "Asia/Seoul",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "ko",
+                        "enable_publishing": false,
+                        "hide_side_toolbar": false,
+                        "allow_symbol_change": true,
+                        "container_id": "tradingview_fx"
+                    });
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </div>
+
+        <!-- 경제 캘린더 (실시간 발표 지표) -->
+        <div class="card col-6">
+            <div class="card-title">📅 글로벌 주요 경제 일정 (실시간 업데이트)</div>
+            <div class="widget-container">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <iframe src="https://www.tradingview.com/embed-widget/events/?locale=ko#%7B%22colorTheme%22%3A%22light%22%2C%22isWidescreen%22%3Atrue%2C%22width%22%3A%22100%22%2C%22height%22%3A%22100%22%2C%22importanceFilter%22%3A%22-1%2C0%2C1%22%2C%22currencyFilter%22%3A%22USD%2CKRW%22%7D" style="width: 100%; height: 100%; border: none;" scrolling="no"></iframe>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </div>
+
+        <!-- 미국 증시 (S&P 500) 종합 차트 -->
+        <div class="card col-6">
+            <div class="card-title">📈 미국 증시 종합 (S&P 500 지수)</div>
+            <div class="widget-container">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div id="tradingview_sp500" style="height:100%;width:100%"></div>
+                    <script type="text/javascript">
+                    new TradingView.widget({
+                        "autosize": true,
+                        "symbol": "SPASPI",
+                        "interval": "D",
+                        "timezone": "America/New_York",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "ko",
+                        "enable_publishing": false,
+                        "allow_symbol_change": true,
+                        "container_id": "tradingview_sp500"
+                    });
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </div>
+
+        <!-- 한국 증시 (KOSPI) 종합 차트 -->
+        <div class="card col-6">
+            <div class="card-title">📉 한국 증시 종합 (KOSPI 지수)</div>
+            <div class="widget-container">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div id="tradingview_kospi" style="height:100%;width:100%"></div>
+                    <script type="text/javascript">
+                    new TradingView.widget({
+                        "autosize": true,
+                        "symbol": "KRX:KOSPI",
+                        "interval": "D",
+                        "timezone": "Asia/Seoul",
+                        "theme": "light",
+                        "style": "1",
+                        "locale": "ko",
+                        "enable_publishing": false,
+                        "allow_symbol_change": true,
+                        "container_id": "tradingview_kospi"
+                    });
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
